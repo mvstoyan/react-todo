@@ -1,4 +1,6 @@
 import React from 'react';
+import TodoList from './TodoList';
+import AddTodoForm from './AddTodoForm';
 
 function App() {
   // Array of tasks
@@ -12,6 +14,8 @@ function App() {
   return (
     <div>
       <h1>Todo List</h1>
+      <AddTodoForm />
+      <TodoList />
       <ul>
         {/* render the list */}
         {todoList.map((item) => (
