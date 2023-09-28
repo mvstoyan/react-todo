@@ -1,8 +1,7 @@
 import React from 'react';
 import TodoListItem from './TodoListItem';
 
-function TodoList() {
-  // Array of tasks
+// Array of tasks
   const todoList = [
     { id: 1, title: "Complete assignment" },
     { id: 2, title: "Read 6 chapters/sections in the Road to React" },
@@ -10,6 +9,7 @@ function TodoList() {
     { id: 4, title: "Submit the homework assignment submission form" },
   ];
 
+function TodoList() {
   return (
     <ul>
   {todoList.map((todo) => (
