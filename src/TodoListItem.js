@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
 function TodoListItem({ todo }) {
   return (
-    <li>
-      {todo.title}
-    </li>
+    <div>
+      <li>{todo.title}</li>
+    </div>
   );
 }
 
