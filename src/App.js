@@ -5,8 +5,8 @@ import TodoList from "./TodoList";
 function App() {
   const [todoList, setTodoList] = React.useState([]);
 
-  function addTodo() {
-    setTodoList();
+  function addTodo(newTodo) {
+    setTodoList([...todoList, newTodo]);
   }
   
   return (
@@ -18,4 +18,4 @@ function App() {
   );
 }
 
-export default App;
+export default App
