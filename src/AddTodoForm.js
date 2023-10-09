@@ -4,8 +4,6 @@ function AddTodoForm({ onAddTodo }) {
   const [todoTitle, setTodoTitle] = React.useState("");
 
   function handleTitleChange(event) {
-    // console.log(event);
-    event.preventDefault();
     let newTodoTitle = event.target.value;
     setTodoTitle(newTodoTitle);
   }
