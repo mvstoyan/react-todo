@@ -5,15 +5,16 @@ function AddTodoForm({ onAddTodo }) {
   const [todoTitle, setTodoTitle] = React.useState("");
 
   function handleTitleChange(event) {
-    let newTodoTitle = event.target.value;
+    const newTodoTitle = event.target.value;
     setTodoTitle(newTodoTitle);
   }
 
   function handleAddTodo(event) {
-    console.log(event);
     event.preventDefault();
-    console.log(todoTitle);
-    onAddTodo({ title: todoTitle, id: Date.now() });
+    if (todoTitle === "") {
+      return;
+    }
+    onAddTodo(todoTitle);
     setTodoTitle("");
   }
 
@@ -22,7 +23,7 @@ function AddTodoForm({ onAddTodo }) {
       <InputWithLabel
         id="todoTitle"
         value={todoTitle}
-        onInputChange={handleTitleChange}
+        handleTitleChange={handleTitleChange}
       >
         <strong>Title:</strong>
       </InputWithLabel>

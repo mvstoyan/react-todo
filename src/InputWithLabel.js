@@ -5,7 +5,7 @@ function InputWithLabel({
   type = "text",
   children,
   value,
-  onInputChange,
+  handleTitleChange,
 }) {
   const inputRef = React.useRef();
 
@@ -20,7 +20,7 @@ function InputWithLabel({
         id={id}
         type={type}
         value={value}
-        onChange={onInputChange}
+        onChange={handleTitleChange}
         ref={inputRef}
       />
     </>

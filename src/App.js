@@ -37,20 +37,55 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  React.useEffect(() => {
-    if (isLoading === false) {
-      localStorage.setItem("savedTodoList", JSON.stringify(todoList));
+  const addTodo = async (title) => {
+    const postTitle = {
+      fields: {
+        title: title,
+      },
+    };
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${airtableToken}`,
+      },
+      body: JSON.stringify(postTitle),
+    };
+    try {
+      const response = await fetch(airtableUrl, options);
+      if (!response.ok) {
+        throw new Error(`Error has occurred: ${response.status}`);
+      }
+      const todo = await response.json();
+      const newTodo = { id: todo.id, title: todo.fields.title };
+      setTodoList([...todoList, newTodo]);
+    } catch (error) {
+      console.log(error.message);
+      return null;
     }
-  }, [isLoading, todoList]);
+  };
 
-  function addTodo(newTodo) {
-    setTodoList([...todoList, newTodo]); //adds a new todo
-  }
-  function removeTodo(id) {
-    // removing todo
-    const newTodoList = todoList.filter((todo) => id !== todo.id);
-    setTodoList(newTodoList);
-  }
+  const removeTodo = async (id) => {
+    const options = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${airtableToken}`,
+      },
+    };
+    try {
+      const response = await fetch(`${airtableUrl}/${id}`, options);
+      if (!response.ok) {
+        throw new Error(`Error has occurred: ${response.status}`);
+      }
+      const newTodoList = todoList.filter(function (todo) {
+        return id !== todo.id;
+      });
+      setTodoList(newTodoList);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <>
