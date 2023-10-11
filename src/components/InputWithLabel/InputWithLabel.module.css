@@ -1,0 +1,13 @@
+.inputField {
+  padding: 10px;
+  color: #18526d;
+  font-size: 20px;
+  width: 400px;
+  height: 30px;
+  border: none;
+  outline: none;
+  box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.15),
+    inset 2px 2px 5px rgb(196, 221, 252),
+    inset -3px -3px 5px rgba(0, 0, 0, 0.15);
+  background-color: #f7f7f0;
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import style from "./InputWithLabel.module.css";
 
 function InputWithLabel({
   id,
@@ -17,6 +18,7 @@ function InputWithLabel({
     <>
       <label htmlFor={id}>{children} </label>
       <input
+        className={style.inputField}
         id={id}
         type={type}
         value={value}

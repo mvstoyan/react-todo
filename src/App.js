@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ReactTodo from "./components/reactTodo/reactTodo";
+import "./public/globalStyles.css";
 
 function App() {
   return (
