@@ -1,6 +1,6 @@
 import React from "react";
-import AddTodoForm from "./AddTodoForm";
-import TodoList from "./TodoList";
+import AddTodoForm from "../AddTodoForm/AddTodoForm";
+import TodoList from "../TodoList/TodoList";
 
 function ReactTodo() {
   const [todoList, setTodoList] = React.useState([]);

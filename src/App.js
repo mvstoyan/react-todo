@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ReactTodo from "./reactTodo";
+import ReactTodo from "./components/reactTodo/reactTodo";
 
 function App() {
   return (

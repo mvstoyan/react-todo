@@ -1,5 +1,5 @@
 import React from "react";
-import InputWithLabel from "./InputWithLabel";
+import InputWithLabel from "../InputWithLabel/InputWithLabel";
 
 function AddTodoForm({ onAddTodo }) {
   const [todoTitle, setTodoTitle] = React.useState("");
