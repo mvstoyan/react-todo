@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ReactTodo from "./components/reactTodo/reactTodo";
+import Animation from "./components/Animation/animation";
 import "./public/globalStyles.css";
 
 function App() {
@@ -8,7 +9,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<ReactTodo />} />
-        <Route path="/new" element={<h1>New Todo List</h1>} />
+        <Route path="/new" element={<Animation />} />
       </Routes>
     </BrowserRouter>
   );

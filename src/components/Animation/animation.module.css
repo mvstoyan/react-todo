@@ -1,0 +1,28 @@
+.images {
+    width: 200px;
+}
+
+.note {
+    display: flex;
+    justify-content: center;
+}
+.one {
+    display: flex;
+    flex-direction: column;
+    padding-right: 100px;
+}
+.two {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+h2 {
+    font-size: 20px;
+    color: #18526d;
+    font-family: 'Handlee', cursive;
+}
