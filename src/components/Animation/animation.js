@@ -12,12 +12,16 @@ function Animation() {
   const boxRef = useRef();
 
   useEffect(() => {
+    console.log("start");
     gsap.from(boxRef.current, {
       x: -400,
       delay: 1,
       ease: "power2.inOut",
       opacity: 0,
       duration: 2,
+      onComplete: () => {
+        console.log("end");
+      },
     });
   });
 
@@ -52,23 +56,23 @@ function Animation() {
         <div ref={boxRef}>
           <img src={witch} className={style.images} alt="witch" />
         </div>
-      </div>
-
-      <div>
+        <div className={style.two}>
         <h2>
           {toDoData} - {time}
         </h2>
+        <div className={style.container}>
+          <button className={style.btn} onClick={backPermanent}>
+            Back
+          </button>
+          <button className={style.btn} onClick={nextPermanent}>
+            Next
+          </button>
+        </div>
       </div>
-      <div className={style.two}>
-      <div className={style.container}>
-        <button className="btn" onClick={backPermanent}>
-          Back
-        </button>
-        <button className="btn" onClick={nextPermanent}>
-          Next
-        </button>
+
+      
+        
       </div>
-    </div>
     </div>
   );
 }

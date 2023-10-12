@@ -6,9 +6,9 @@ export const data = [
     },
 
     {
-        toDoData: "Learn something new",
+        toDoData: "Learn new today",
         
-        time: "One"
+        time: "1"
     },
 
     {
