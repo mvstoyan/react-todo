@@ -14,16 +14,12 @@
   font-family: "Fredericka the Great", cursive;
 }
 
-  @media (max-width: 767px) {
-  
+@media (max-width: 767px) {
   .btn {
-      margin-left: 5px;
-      font-size: 10px;
+    margin-left: 5px;
+    font-size: 10px;
   }
   .AddButton {
-      width: 20px;
+    width: 20px;
   }
-  }
-  
-  
-  
+}

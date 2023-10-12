@@ -22,30 +22,24 @@ li {
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-
   li {
-      padding: 5px;
-      font-size: 15px;
-      width: 400px;
-      height: 30px;
+    padding: 5px;
+    font-size: 15px;
+    width: 400px;
+    height: 30px;
   }
-  }
-  
-  
-  @media (max-width: 767px) {
+}
 
+@media (max-width: 767px) {
   .ul {
-      padding: 5px;
-      margin: 0;
+    padding: 5px;
+    margin: 0;
   }
   li {
-      margin-left: -5px;
-      padding: 5px;
-      font-size: 15px;
-      width: 200px;
-      height: 20px;
+    margin-left: -5px;
+    padding: 5px;
+    font-size: 15px;
+    width: 200px;
+    height: 20px;
   }
-  }
-  
-  
-  
+}

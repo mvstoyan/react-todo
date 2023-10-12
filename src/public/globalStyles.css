@@ -28,21 +28,14 @@ body {
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-
   body {
     width: auto;
   }
-  }
-  
-  
-  @media (max-width: 767px) {
+}
 
+@media (max-width: 767px) {
   .btn {
-      margin-left: 5px;
-      font-size: 10px;
+    margin-left: 5px;
+    font-size: 10px;
   }
-  
-  }
-  
-  
-  
+}

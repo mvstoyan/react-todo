@@ -36,7 +36,6 @@ function TodoListItem({ todo, onRemoveTodo, onUpdateTodo }) {
 
 export default TodoListItem;
 
-
 // import React from "react";
 // import style from "./TodoListItem.module.css";
 // import Remove from "../../public/img/remove.svg";
@@ -59,5 +58,3 @@ export default TodoListItem;
 // }
 
 // export default TodoListItem;
-
-

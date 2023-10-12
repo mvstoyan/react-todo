@@ -1,4 +1,5 @@
-.header, .Loading {
+.header,
+.Loading {
   font-size: 40px;
   color: #18526d;
   font-family: "Fredericka the Great", cursive;
@@ -8,16 +9,6 @@
   display: flex;
   justify-content: center;
 }
-.one {
-  display: flex;
-  flex-direction: column;
-  
-}
-.two {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
 .container {
   display: flex;
@@ -25,37 +16,28 @@
   justify-content: flex-start;
 }
 
-@media (min-width: 768px) and (max-width: 991px) {
-
+@media all and (max-width: 1024px) {
   body {
     width: auto;
   }
-
   .note {
     display: flex;
     flex-direction: column-reverse;
     padding: 10px;
-    flex-wrap: wrap;
   }
-  .one {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
-  .img {
-    width: 150px;
-  }
-
-  }
-  
-
-@media (max-width: 767px) {
-
-.header {
+  .header {
     font-size: 18px;
+  }
 }
 
+@media all and (max-width: 500px) {
+  body {
+    width: auto;
+  }
+  .note {
+    padding: 10px;
+  }
+  .header {
+    font-size: 18px;
+  }
 }
-
-
-

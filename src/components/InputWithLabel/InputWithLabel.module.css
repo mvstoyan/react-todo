@@ -12,15 +12,11 @@
   background-color: #f7f7f0;
 }
 
-  @media (max-width: 767px) {
-
+@media (max-width: 767px) {
   .inputField {
-      padding: 5px;
-      font-size: 15px;
-      width: 200px;
-      height: 20px;
+    padding: 5px;
+    font-size: 15px;
+    width: 200px;
+    height: 20px;
   }
-  }
-  
-  
-  
+}

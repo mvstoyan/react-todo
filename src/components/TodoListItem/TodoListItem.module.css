@@ -6,16 +6,11 @@
   background-color: transparent;
 }
 
-  @media (max-width: 767px) {
-    
+@media (max-width: 767px) {
   .imgBtn {
-      width: 15px;
+    width: 15px;
   }
   .icon {
-      size: 15px;
+    size: 15px;
   }
-  
-  }
-  
-  
-  
+}

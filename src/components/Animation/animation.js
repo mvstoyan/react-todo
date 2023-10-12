@@ -50,13 +50,12 @@ function Animation() {
 
   return (
     <div className={style.note}>
-      <div className={style.one}>
-        <img src={doIt} alt="Let's Do It" className={style.images} />
+      <img src={doIt} alt="Let's Do It" className={style.images} />
 
-        <div ref={boxRef}>
-          <img src={witch} className={style.images} alt="witch" />
-        </div>
-        <div className={style.two}>
+      <div ref={boxRef}>
+        <img src={witch} className={style.images} alt="witch" />
+      </div>
+      <div className={style.two}>
         <h2>
           {toDoData} - {time}
         </h2>
@@ -68,10 +67,6 @@ function Animation() {
             Next
           </button>
         </div>
-      </div>
-
-      
-        
       </div>
     </div>
   );

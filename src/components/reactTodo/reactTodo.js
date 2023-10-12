@@ -130,21 +130,20 @@ function ReactTodo() {
     <>
       <div className={style.note}>
         <Animation />
-          <div className={style.container}>
+        <div className={style.container}>
           <h1 className={style.header}>What are your plans for today</h1>
-            <AddTodoForm onAddTodo={addTodo} />
-            {isLoading ? (
-              <p className={style.Loading}>Loading ...</p>
-            ) : (
-              <TodoList
-                todoList={todoList}
-                onRemoveTodo={removeTodo}
-                onUpdateTodo={updateTodo}
-              />
-            )}
-          </div>
+          <AddTodoForm onAddTodo={addTodo} />
+          {isLoading ? (
+            <p className={style.Loading}>Loading ...</p>
+          ) : (
+            <TodoList
+              todoList={todoList}
+              onRemoveTodo={removeTodo}
+              onUpdateTodo={updateTodo}
+            />
+          )}
         </div>
-      
+      </div>
     </>
   );
 }
