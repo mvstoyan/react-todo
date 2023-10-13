@@ -2,51 +2,90 @@ import React from "react";
 import AddTodoForm from "./AddTodoForm";
 import TodoList from "./TodoList";
 
-// OLD CODE - saving the todo after page reload
-// function useSemiPersistentState() {
-//  const [todoList, setTodoList] = React.useState(
-//    JSON.parse(localStorage.getItem("savedTodoList")) || []
-//  );
-//  React.useEffect(() => {
-//    localStorage.setItem("savedTodoList", JSON.stringify(todoList));
-//  }, [todoList]);
-//  return [todoList, setTodoList];
-//}
 function App() {
   const [todoList, setTodoList] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
+  const airtableUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}`;
+  const airtableToken = process.env.REACT_APP_AIRTABLE_API_TOKEN;
+
+  const fetchData = async () => {
+    const options = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${airtableToken}`,
+      },
+    };
+    try {
+      const response = await fetch(airtableUrl, options);
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+      const todosFromAPI = await response.json();
+      const todos = todosFromAPI.records.map((todo) => {
+        return { id: todo.id, title: todo.fields.title };
+      });
+      setTodoList(todos);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   React.useEffect(() => {
-    new Promise((resolve, reject) =>
-      setTimeout(
-        () =>
-          resolve({
-            data: {
-              todoList: JSON.parse(localStorage.getItem("savedTodoList")),
-            },
-          }),
-        2000
-      )
-    ).then((result) => {
-      setTodoList(result.data.todoList);
-      setIsLoading(false);
-    });
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  React.useEffect(() => {
-    if (isLoading === false) {
-      localStorage.setItem("savedTodoList", JSON.stringify(todoList));
+  const addTodo = async (title) => {
+    const postTitle = {
+      fields: {
+        title: title,
+      },
+    };
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${airtableToken}`,
+      },
+      body: JSON.stringify(postTitle),
+    };
+    try {
+      const response = await fetch(airtableUrl, options);
+      if (!response.ok) {
+        throw new Error(`Error has occurred: ${response.status}`);
+      }
+      const todo = await response.json();
+      const newTodo = { id: todo.id, title: todo.fields.title };
+      setTodoList([...todoList, newTodo]);
+    } catch (error) {
+      console.log(error.message);
+      return null;
     }
-  }, [isLoading, todoList]);
+  };
 
-  function addTodo(newTodo) {
-    setTodoList([...todoList, newTodo]); //adds a new todo
-  }
-  function removeTodo(id) {
-    // removing todo
-    const newTodoList = todoList.filter((todo) => id !== todo.id);
-    setTodoList(newTodoList);
-  }
+  const removeTodo = async (id) => {
+    const options = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${airtableToken}`,
+      },
+    };
+    try {
+      const response = await fetch(`${airtableUrl}/${id}`, options);
+      if (!response.ok) {
+        throw new Error(`Error has occurred: ${response.status}`);
+      }
+      const newTodoList = todoList.filter(function (todo) {
+        return id !== todo.id;
+      });
+      setTodoList(newTodoList);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <>
