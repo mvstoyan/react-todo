@@ -1,5 +1,8 @@
 import React from "react";
-import InputWithLabel from "./InputWithLabel";
+import InputWithLabel from "../InputWithLabel/InputWithLabel";
+import style from "./AddTodoForm.module.css";
+import Add from "../../public/img/next.png";
+import PropTypes from "prop-types";
 
 function AddTodoForm({ onAddTodo }) {
   const [todoTitle, setTodoTitle] = React.useState("");
@@ -24,12 +27,16 @@ function AddTodoForm({ onAddTodo }) {
         id="todoTitle"
         value={todoTitle}
         handleTitleChange={handleTitleChange}
-      >
-        <strong>Title:</strong>
-      </InputWithLabel>
-      <button type="submit">Add</button>
+      ></InputWithLabel>
+      <button className={style.btn} type="submit">
+        <img src={Add} alt="Add" className={style.AddButton} />
+      </button>
     </form>
   );
 }
+
+AddTodoForm.propTypes = {
+  onAddTodo: PropTypes.func,
+};
 
 export default AddTodoForm;
