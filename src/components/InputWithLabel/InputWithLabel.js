@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./InputWithLabel.module.css";
+import PropTypes from "prop-types";
 
 function InputWithLabel({
   id,
@@ -28,4 +29,13 @@ function InputWithLabel({
     </>
   );
 }
+
+InputWithLabel.propTypes = {
+  id: PropTypes.string,
+  type: PropTypes.string,
+  children: PropTypes.node,
+  value: PropTypes.string,
+  handleTitleChange: PropTypes.func,
+};
+
 export default InputWithLabel;
