@@ -8,10 +8,11 @@ import PropTypes from "prop-types";
 function TodoContainer() {
   const [todoList, setTodoList] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
-  const airtableUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}?view=Grid%20view&sort[0][field]=title&sort[0][direction]=asc`;
+  const airtableUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}`;
   const airtableToken = process.env.REACT_APP_AIRTABLE_API_TOKEN;
 
   const fetchData = async () => {
+    const getAirtableUrl = `${airtableUrl}?view=Grid%20view&sort[0][field]=title&sort[0][direction]=asc`;
     const options = {
       method: "GET",
       headers: {
@@ -19,7 +20,7 @@ function TodoContainer() {
       },
     };
     try {
-      const response = await fetch(airtableUrl, options);
+      const response = await fetch(getAirtableUrl, options);
 
       if (!response.ok) {
         throw new Error(`Error: ${response.status}`);
