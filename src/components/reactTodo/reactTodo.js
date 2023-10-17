@@ -1,6 +1,8 @@
 import React from "react";
-import AddTodoForm from "./AddTodoForm";
-import TodoList from "./TodoList";
+import AddTodoForm from "../AddTodoForm/AddTodoForm";
+import TodoList from "../TodoList/TodoList";
+import style from "./reactTodo.module.css";
+import Animation from "../Animation/animation";
 
 function ReactTodo() {
   const [todoList, setTodoList] = React.useState([]);
@@ -87,15 +89,61 @@ function ReactTodo() {
     }
   };
 
+  const updateTodo = async (id, newTitle) => {
+    const updatedTodo = {
+      fields: {
+        title: newTitle,
+      },
+    };
+    const options = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${airtableToken}`,
+      },
+      body: JSON.stringify(updatedTodo),
+    };
+    try {
+      const response = await fetch(`${airtableUrl}/${id}`, options);
+      if (!response.ok) {
+        throw new Error(`Error has occurred: ${response.status}`);
+      }
+      const updatedTodoData = await response.json();
+      const updatedTodo = {
+        id: updatedTodoData.id,
+        title: updatedTodoData.fields.title,
+      };
+      const updatedTodoList = todoList.map((todo) => {
+        if (todo.id === id) {
+          return updatedTodo;
+        } else {
+          return todo;
+        }
+      });
+      setTodoList(updatedTodoList);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <>
-      <h1>Todo List</h1>
-      <AddTodoForm onAddTodo={addTodo} />
-      {isLoading ? (
-        <p>Loading ...</p>
-      ) : (
-        <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
-      )}
+      <div className={style.note}>
+        <Animation />
+        <div className={style.container}>
+          <h1 className={style.header}>What are your plans for today</h1>
+          <AddTodoForm onAddTodo={addTodo} />
+          {isLoading ? (
+            <p className={style.Loading}>Loading ...</p>
+          ) : (
+            <TodoList
+              todoList={todoList}
+              onRemoveTodo={removeTodo}
+              onUpdateTodo={updateTodo}
+            />
+          )}
+        </div>
+      </div>
     </>
   );
 }

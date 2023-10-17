@@ -1,0 +1,16 @@
+.imgBtn {
+  width: 24px;
+}
+.icon {
+  border: none;
+  background-color: transparent;
+}
+
+@media (max-width: 767px) {
+  .imgBtn {
+    width: 15px;
+  }
+  .icon {
+    size: 15px;
+  }
+}

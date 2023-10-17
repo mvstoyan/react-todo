@@ -1,0 +1,43 @@
+.header,
+.Loading {
+  font-size: 40px;
+  color: #18526d;
+  font-family: "Fredericka the Great", cursive;
+}
+
+.note {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+@media all and (max-width: 1024px) {
+  body {
+    width: auto;
+  }
+  .note {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 10px;
+  }
+  .header {
+    font-size: 18px;
+  }
+}
+
+@media all and (max-width: 500px) {
+  body {
+    width: auto;
+  }
+  .note {
+    padding: 10px;
+  }
+  .header {
+    font-size: 18px;
+  }
+}
