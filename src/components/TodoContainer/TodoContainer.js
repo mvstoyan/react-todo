@@ -8,11 +8,16 @@ import PropTypes from "prop-types";
 function TodoContainer() {
   const [todoList, setTodoList] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
+  const [sortOrder, setSortOrder] = React.useState("asc");
   const airtableUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}`;
   const airtableToken = process.env.REACT_APP_AIRTABLE_API_TOKEN;
 
+  const toggleSortOrder = () => {
+    setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+  };
+
   const fetchData = async () => {
-    const getAirtableUrl = `${airtableUrl}?view=Grid%20view&sort[0][field]=title&sort[0][direction]=asc`;
+    const getAirtableUrl = `${airtableUrl}?view=Grid%20view&sort[0][field]=title&sort[0][direction]=${sortOrder}`;
     const options = {
       method: "GET",
       headers: {
@@ -30,10 +35,10 @@ function TodoContainer() {
         const titleA = objectA.fields.title.toUpperCase();
         const titleB = objectB.fields.title.toUpperCase();
         if (titleA < titleB) {
-          return -1;
+          return sortOrder === "asc" ? -1 : 1;
         }
         if (titleA > titleB) {
-          return 1;
+          return sortOrder === "asc" ? 1 : -1;
         }
         return 0;
       });
@@ -50,7 +55,7 @@ function TodoContainer() {
   React.useEffect(() => {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [sortOrder]);
 
   const addTodo = async (title) => {
     const postTitle = {
@@ -146,6 +151,9 @@ function TodoContainer() {
         <div className={style.container}>
           <h1 className={style.header}>What are your plans for today</h1>
           <AddTodoForm onAddTodo={addTodo} />
+          <button onClick={toggleSortOrder} className={style.btn}>
+            Toggle Sort Order
+          </button>
           {isLoading ? (
             <p className={style.Loading}>Loading ...</p>
           ) : (
