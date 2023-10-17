@@ -26,6 +26,17 @@ function TodoContainer() {
         throw new Error(`Error: ${response.status}`);
       }
       const todosFromAPI = await response.json();
+      todosFromAPI.records.sort((objectA, objectB) => {
+        const titleA = objectA.fields.title.toUpperCase();
+        const titleB = objectB.fields.title.toUpperCase();
+        if (titleA < titleB) {
+          return -1;
+        }
+        if (titleA > titleB) {
+          return 1;
+        }
+        return 0;
+      });
       const todos = todosFromAPI.records.map((todo) => {
         return { id: todo.id, title: todo.fields.title };
       });
