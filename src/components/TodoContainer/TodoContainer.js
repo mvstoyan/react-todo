@@ -43,7 +43,19 @@ function TodoContainer() {
         return 0;
       });
       const todos = todosFromAPI.records.map((todo) => {
-        return { id: todo.id, title: todo.fields.title };
+        if (todo.fields.createdTime) {
+          return {
+            id: todo.id,
+            title: todo.fields.title,
+            createdTime: new Date(todo.fields.createdTime).toISOString(),
+          }; // Back to string
+        } else {
+          return {
+            id: todo.id,
+            title: todo.fields.title,
+            createdTime: new Date().toISOString(),
+          }; // Current fallback time
+        }
       });
       setTodoList(todos);
       setIsLoading(false);
@@ -61,6 +73,7 @@ function TodoContainer() {
     const postTitle = {
       fields: {
         title: title,
+        createdTime: new Date().toISOString(), // Add createdTime
       },
     };
     const options = {
@@ -77,14 +90,26 @@ function TodoContainer() {
         throw new Error(`Error has occurred: ${response.status}`);
       }
       const todo = await response.json();
-      const newTodo = { id: todo.id, title: todo.fields.title };
-      setTodoList([...todoList, newTodo]);
+      const newTodo = {
+        id: todo.id,
+        title: todo.fields.title,
+        createdTime: todo.createdTime,
+      }; // Add created time
+      const updatedTodoList = [...todoList, newTodo]; // Updating list
+      updatedTodoList.sort((a, b) => {
+        // Sorting by creation time
+        if (sortOrder === "asc") {
+          return new Date(a.createdTime) - new Date(b.createdTime);
+        } else {
+          return new Date(b.createdTime) - new Date(a.createdTime);
+        }
+      });
+      setTodoList(updatedTodoList); // Sorted list of tasks
     } catch (error) {
       console.log(error.message);
       return null;
     }
   };
-
   const removeTodo = async (id) => {
     const options = {
       method: "DELETE",
