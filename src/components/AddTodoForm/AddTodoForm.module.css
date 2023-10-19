@@ -14,7 +14,7 @@
   font-family: "Fredericka the Great", cursive;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 420px) {
   .btn {
     margin-left: 5px;
     font-size: 10px;

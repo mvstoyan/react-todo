@@ -12,28 +12,32 @@ function TodoListItem({ todo, onRemoveTodo, onUpdateTodo }) {
     }
   };
   return (
-    <div>
-      <li>
-        <button
-          className={style.icon}
-          type="button"
-          onClick={handleUpdateClick}
-        >
-          <img src={Update} alt="Update" className={style.imgBtn} />
-        </button>
-        <button
-          className={style.icon}
-          type="button"
-          onClick={() => onRemoveTodo(todo.id)}
-        >
-          <img src={Remove} alt="Remove" className={style.imgBtn} />
-        </button>
-        <div className={style.title}>{todo.title}</div>
-        <div className={style.createdTime}>
-          Created at: {new Date(todo.createdTime).toLocaleString()}
+    <li className={style.li}>
+      <div className={style.container}>
+        <div>
+          <p className={style.createdTime}>
+            Created at: {new Date(todo.createdTime).toLocaleString()}
+          </p>
         </div>
-      </li>
-    </div>
+        <div>
+          <button
+            className={style.icon}
+            type="button"
+            onClick={handleUpdateClick}
+          >
+            <img src={Update} alt="Update" className={style.imgBtn} />
+          </button>
+          <button
+            className={style.icon}
+            type="button"
+            onClick={() => onRemoveTodo(todo.id)}
+          >
+            <img src={Remove} alt="Remove" className={style.imgBtn} />
+          </button>
+        </div>
+      </div>
+      <span className={style.title}>{todo.title}</span>
+    </li>
   );
 }
 

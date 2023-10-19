@@ -136,6 +136,7 @@ function TodoContainer() {
     const updatedTodo = {
       fields: {
         title: newTitle,
+        createdTime: new Date().toISOString(),
       },
     };
     const options = {
@@ -155,6 +156,7 @@ function TodoContainer() {
       const updatedTodo = {
         id: updatedTodoData.id,
         title: updatedTodoData.fields.title,
+        createdTime: updatedTodoData.fields.createdTime,
       };
       const updatedTodoList = todoList.map((todo) => {
         if (todo.id === id) {
@@ -172,13 +174,13 @@ function TodoContainer() {
   return (
     <>
       <div className={style.note}>
-        <Animation />
-        <div className={style.container}>
+        <div className={style.first}>
+          <Animation />
+        </div>
+        <div className={style.second}>
           <h1 className={style.header}>What are your plans for today</h1>
           <AddTodoForm onAddTodo={addTodo} />
-          <button onClick={toggleSortOrder} className={style.btn}>
-            Toggle Sort Order
-          </button>
+
           {isLoading ? (
             <p className={style.Loading}>Loading ...</p>
           ) : (
@@ -186,6 +188,8 @@ function TodoContainer() {
               todoList={todoList}
               onRemoveTodo={removeTodo}
               onUpdateTodo={updateTodo}
+              toggleSortOrder={toggleSortOrder}
+              sortOrder={sortOrder}
             />
           )}
         </div>
