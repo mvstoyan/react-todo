@@ -23,6 +23,27 @@ body {
   font-family: "Fredericka the Great", cursive;
 }
 
+.navbar {
+  padding: 5px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.navbar ul {
+  list-style-type: none;
+  display: flex;
+}
+
+.navbar ul li {
+  margin-right: 20px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #18526d;
+  font-weight: bold;
+}
+
 @media (max-width: 420px) {
   .btn {
     margin-left: 5px;
