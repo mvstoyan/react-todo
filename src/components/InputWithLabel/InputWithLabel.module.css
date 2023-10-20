@@ -12,7 +12,7 @@
   background-color: #f7f7f0;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 420px) {
   .inputField {
     padding: 5px;
     font-size: 15px;

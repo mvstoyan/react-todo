@@ -5,6 +5,7 @@ import doIt from "../../public/img/doIt.png";
 import style from "./animation.module.css";
 import { useState } from "react";
 import { data } from "./data";
+import PropTypes from "prop-types";
 
 const { useEffect, useRef } = React;
 
@@ -49,7 +50,7 @@ function Animation() {
   };
 
   return (
-    <div className={style.note}>
+    <div className={style.animation}>
       <img src={doIt} alt="Let's Do It" className={style.images} />
 
       <div ref={boxRef}>
@@ -71,5 +72,11 @@ function Animation() {
     </div>
   );
 }
+
+Animation.propTypes = {
+  permanent: PropTypes.number,
+  toDoData: PropTypes.string,
+  time: PropTypes.string,
+};
 
 export default Animation;
