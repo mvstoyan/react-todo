@@ -2,6 +2,7 @@ import React from "react";
 import TodoListItem from "../TodoListItem/TodoListItem";
 import style from "./TodoList.module.css";
 import PropTypes from "prop-types";
+import globalStyle from "../../public/globalStyles.module.css";
 
 function TodoList({
   todoList,
@@ -14,7 +15,7 @@ function TodoList({
   return (
     <>
       <ul className={style.ul}>
-        <button onClick={toggleSortOrder} className={style.btn}>
+        <button onClick={toggleSortOrder} className={globalStyle.btn}>
           {sortButtonText}
         </button>
         {todoList.map((todo) => (

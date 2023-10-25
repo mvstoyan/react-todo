@@ -21,19 +21,6 @@ li {
   width: 400px;
 }
 
-.btn {
-  outline: none;
-  background: #c4ddfc;
-  box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.15),
-    inset 2px 2px 5px rgb(196, 221, 252),
-    inset -3px -3px 5px rgba(0, 0, 0, 0.15);
-  border: none;
-  width: 30%;
-  font-size: 13px;
-  color: #18526d;
-  font-family: "Fredericka the Great", cursive;
-}
-
 @media all and (max-width: 1024px) {
   li {
     padding: 5px;

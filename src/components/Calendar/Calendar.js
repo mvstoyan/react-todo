@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import style from "./Calendar.module.css";
+import { data } from "./data";
 
 const MyCalendar = ({ todoList, setTodoList }) => {
   const [date, setDate] = useState(new Date()); // selected date
@@ -39,9 +40,12 @@ const MyCalendar = ({ todoList, setTodoList }) => {
           title: todo.fields.title,
           createdTime: new Date(todo.createdTime),
         };
-        setTodoList([...todoList, newTodo]);
+        if (Array.isArray(todoList)) {
+          setTodoList([...todoList, newTodo]);
+        }
       })
       .catch((error) => console.error("Error adding task:", error));
+
 
     setInputValue("");
     setSelectedDate(null);
@@ -55,8 +59,23 @@ const MyCalendar = ({ todoList, setTodoList }) => {
     setSelectedDate(value);
   };
 
+  const [permanent, setPermanent] = useState(0);
+
+  const displayRandomReminder = () => {
+    setPermanent(Math.floor(Math.random() * data.length));
+    
+  };
+
+  useEffect(() => {
+    displayRandomReminder();
+  }, []);
+
+
   return (
-    <div>
+    <div className={style.calendar}>
+      <div className={style.two}>
+        <h2>{data[permanent].reminder}</h2>
+      </div>
       <Calendar
         onChange={setDate}
         value={date}
@@ -66,7 +85,7 @@ const MyCalendar = ({ todoList, setTodoList }) => {
             (task) => task.date.toDateString() === date.toDateString()
           );
           return (
-            <div>
+            <div className={style.calendarTask}>
               {tasksForDate.map((task) => (
                 <p key={task.task}>{task.task}</p>
               ))}
@@ -78,7 +97,7 @@ const MyCalendar = ({ todoList, setTodoList }) => {
                       value={inputValue}
                       onChange={handleInputChange}
                     />
-                    <button onClick={addTask}>Add</button>
+                    <button onClick={addTask} className={style.btn}>+</button>
                   </div>
                 )}
             </div>

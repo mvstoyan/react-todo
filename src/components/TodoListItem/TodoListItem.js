@@ -16,7 +16,7 @@ function TodoListItem({ todo, onRemoveTodo, onUpdateTodo }) {
       <div className={style.container}>
         <div>
           <p className={style.createdTime}>
-            Created at: {new Date(todo.createdTime).toLocaleString()}
+            {new Date(todo.createdTime).toLocaleString()}
           </p>
         </div>
         <div>

@@ -3,6 +3,7 @@ import InputWithLabel from "../InputWithLabel/InputWithLabel";
 import style from "./AddTodoForm.module.css";
 import Add from "../../public/img/next.png";
 import PropTypes from "prop-types";
+import globalStyle from "../../public/globalStyles.module.css";
 
 function AddTodoForm({ onAddTodo }) {
   const [todoTitle, setTodoTitle] = React.useState("");
@@ -28,7 +29,7 @@ function AddTodoForm({ onAddTodo }) {
         value={todoTitle}
         handleTitleChange={handleTitleChange}
       ></InputWithLabel>
-      <button className={style.btn} type="submit">
+      <button className={globalStyle.btn} type="submit">
         <img src={Add} alt="Add" className={style.AddButton} />
       </button>
     </form>

@@ -1,19 +1,13 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import witch from "../../public/img/witch.svg";
 import doIt from "../../public/img/doIt.png";
 import style from "./animation.module.css";
-import { useState } from "react";
-import { data } from "./data";
 import PropTypes from "prop-types";
-
-const { useEffect, useRef } = React;
 
 function Animation() {
   const boxRef = useRef();
-
-  useEffect(() => {
-    console.log("start");
+  const animateBox = () => {
     gsap.from(boxRef.current, {
       x: -400,
       delay: 1,
@@ -21,33 +15,15 @@ function Animation() {
       opacity: 0,
       duration: 2,
       onComplete: () => {
-        console.log("end");
+        console.log("Animation complete");
       },
     });
-  });
-
-  const [permanent, setPermanent] = useState(0);
-  const { toDoData, time } = data[permanent];
-
-  const backPermanent = () => {
-    setPermanent((permanent) => {
-      permanent--;
-      if (permanent < 0) {
-        return data.length - 1;
-      }
-      return permanent;
-    });
   };
 
-  const nextPermanent = () => {
-    setPermanent((permanent) => {
-      permanent++;
-      if (permanent > data.length - 1) {
-        permanent = 0;
-      }
-      return permanent;
-    });
-  };
+  useEffect(() => {
+    animateBox();
+  }, []);
+
 
   return (
     <div className={style.animation}>
@@ -56,27 +32,14 @@ function Animation() {
       <div ref={boxRef}>
         <img src={witch} className={style.images} alt="witch" />
       </div>
-      <div className={style.two}>
-        <h2>
-          {toDoData} - {time}
-        </h2>
-        <div className={style.container}>
-          <button className={style.btn} onClick={backPermanent}>
-            Back
-          </button>
-          <button className={style.btn} onClick={nextPermanent}>
-            Next
-          </button>
-        </div>
-      </div>
+      
     </div>
   );
 }
 
 Animation.propTypes = {
   permanent: PropTypes.number,
-  toDoData: PropTypes.string,
-  time: PropTypes.string,
+  reminder: PropTypes.string,
 };
 
 export default Animation;
