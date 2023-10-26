@@ -8,6 +8,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
   background-color: #f7f7f0;
 }
 
@@ -23,30 +24,35 @@ body {
   font-family: "Fredericka the Great", cursive;
 }
 
+h2 {
+  font-size: 20px;
+  color: #18526d;
+  font-family: "Handlee", cursive;
+}
+
 .navbar {
   padding: 5px;
-  display: flex;
-  justify-content: space-around;
 }
 
 .navbar ul {
   list-style-type: none;
-  display: flex;
-}
-
-.navbar ul li {
-  margin-right: 20px;
 }
 
 .navbar ul li a {
   text-decoration: none;
   color: #18526d;
+  font-size: 20px;
   font-weight: bold;
+  font-family: "Fredericka the Great", cursive;
 }
 
 @media (max-width: 420px) {
   .btn {
     margin-left: 5px;
     font-size: 10px;
+  }
+
+  h2 {
+    font-size: 13px;
   }
 }

@@ -1,18 +1,25 @@
 .calendar {
-    border: 1px solid #ccc;
-    font-family: Arial, sans-serif;
+  padding: 10px;
+  text-align: center;
+  color: #18526d;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.15),
+    inset 2px 2px 5px rgb(196, 221, 252),
+    inset -3px -3px 5px rgba(0, 0, 0, 0.15);
+  background-color: #f7f7f0;
     width: 80%;
     padding: 20px;
   }
 
   .calendarTask {
-    font-family: Arial, sans-serif;
     width: 80%;
     height: 50px;
   }
 
   .task {
-    font-family: Arial, sans-serif;
+    font-family: "Handlee", cursive;
   }
 
   input { 
@@ -20,15 +27,6 @@
   }
 
   .btn {
-    margin-left: 10px;
     font-weight: bolder;
-    outline: none;
-    background: #c4ddfc;
-    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.15),
-      inset 2px 2px 5px rgb(196, 221, 252),
-      inset -3px -3px 5px rgba(0, 0, 0, 0.15);
-    border: none;
-    color: #18526d;
-    font-family: "Fredericka the Great", cursive;
   }
   

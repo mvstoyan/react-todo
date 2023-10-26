@@ -2,11 +2,11 @@
   width: 40px;
 }
 
+form {
+  display: flex;
+}
+
 @media (max-width: 420px) {
-  .btn {
-    margin-left: 5px;
-    font-size: 10px;
-  }
   .AddButton {
     width: 20px;
   }

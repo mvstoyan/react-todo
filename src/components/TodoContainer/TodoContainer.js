@@ -110,6 +110,7 @@ function TodoContainer() {
       return null;
     }
   };
+  
   const removeTodo = async (id) => {
     const options = {
       method: "DELETE",
@@ -171,15 +172,36 @@ function TodoContainer() {
     }
   };
 
+  const deleteAll = async () => {
+    const deleteOptions = {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${airtableToken}`,
+      },
+    };
+    try {
+      const allRecords = [...todoList];
+      for (const record of allRecords) {
+        const deleteRecordResponse = await fetch(`${airtableUrl}/${record.id}`, deleteOptions);
+        if (!deleteRecordResponse.ok) {
+          throw new Error(`Error: ${deleteRecordResponse.status}`);
+        }
+      }
+      setTodoList([]); // Удаляем все задачи из списка
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
-      <div className={style.note}>
-        <div className={style.first}>
+      <div className={style.notePage}>
+        <div className={style.animationContainer}>
           <Animation />
         </div>
-        <div className={style.second}>
+        <div className={style.noteContainer}>
           <h1 className={style.header}>What are your plans for today</h1>
-          <AddTodoForm onAddTodo={addTodo} />
+          <AddTodoForm onAddTodo={addTodo} onDeleteAll={deleteAll}/>
 
           {isLoading ? (
             <p className={style.Loading}>Loading ...</p>
@@ -200,7 +222,7 @@ function TodoContainer() {
 
 TodoContainer.propTypes = {
   todoList: PropTypes.array,
-  isLoading: PropTypes.bool, // boolean
+  isLoading: PropTypes.bool,
   addTodo: PropTypes.func,
   removeTodo: PropTypes.func,
   updateTodo: PropTypes.func,

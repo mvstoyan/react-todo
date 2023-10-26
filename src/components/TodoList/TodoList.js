@@ -14,8 +14,8 @@ function TodoList({
   const sortButtonText = sortOrder === "asc" ? "Z-A" : "A-Z";
   return (
     <>
-      <ul className={style.ul}>
-        <button onClick={toggleSortOrder} className={globalStyle.btn}>
+      <ul className={style.todoUl}>
+        <button onClick={toggleSortOrder} className={`${globalStyle.btn} ${style.btn}`}>
           {sortButtonText}
         </button>
         {todoList.map((todo) => (

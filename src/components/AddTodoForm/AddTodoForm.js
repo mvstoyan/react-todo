@@ -5,7 +5,7 @@ import Add from "../../public/img/next.png";
 import PropTypes from "prop-types";
 import globalStyle from "../../public/globalStyles.module.css";
 
-function AddTodoForm({ onAddTodo }) {
+function AddTodoForm({ onAddTodo, onDeleteAll }) {
   const [todoTitle, setTodoTitle] = React.useState("");
 
   function handleTitleChange(event) {
@@ -28,9 +28,12 @@ function AddTodoForm({ onAddTodo }) {
         id="todoTitle"
         value={todoTitle}
         handleTitleChange={handleTitleChange}
-      ></InputWithLabel>
+      />
       <button className={globalStyle.btn} type="submit">
         <img src={Add} alt="Add" className={style.AddButton} />
+      </button>
+      <button className={globalStyle.btn} onClick={onDeleteAll}>
+        Delete All
       </button>
     </form>
   );
@@ -38,6 +41,7 @@ function AddTodoForm({ onAddTodo }) {
 
 AddTodoForm.propTypes = {
   onAddTodo: PropTypes.func,
+  onDeleteAll: PropTypes.func,
 };
 
 export default AddTodoForm;

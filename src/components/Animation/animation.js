@@ -24,15 +24,12 @@ function Animation() {
     animateBox();
   }, []);
 
-
   return (
     <div className={style.animation}>
       <img src={doIt} alt="Let's Do It" className={style.images} />
-
       <div ref={boxRef}>
         <img src={witch} className={style.images} alt="witch" />
       </div>
-      
     </div>
   );
 }

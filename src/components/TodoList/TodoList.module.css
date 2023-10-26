@@ -1,4 +1,4 @@
-.ul {
+.todoUl {
   list-style-type: none;
   padding: 10px;
   margin: 0 -10px;
@@ -6,39 +6,15 @@
   flex-direction: column;
   justify-content: center;
 }
-li {
-  padding: 10px;
-  text-align: start;
-  color: #18526d;
-  font-size: 20px;
-  font-family: "Handlee", cursive;
-  border: none;
-  outline: none;
-  box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.15),
-    inset 2px 2px 5px rgb(196, 221, 252),
-    inset -3px -3px 5px rgba(0, 0, 0, 0.15);
-  background-color: #f7f7f0;
-  width: 400px;
-}
 
-@media all and (max-width: 1024px) {
-  li {
-    padding: 5px;
-    font-size: 15px;
-    width: 400px;
-  }
+.btn {
+  width: 30%;
 }
 
 @media (max-width: 420px) {
-  .ul {
+  .todoUl {
     padding: 5px;
     margin: 0;
-  }
-  li {
-    margin-left: -5px;
-    padding: 5px;
-    font-size: 15px;
-    width: 200px;
   }
 
   .btn {

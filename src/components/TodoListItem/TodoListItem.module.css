@@ -1,6 +1,10 @@
-.container {
+.todoItem {
   display: flex;
   justify-content: space-between;
+}
+
+.today {
+  background-color: #ffff00;
 }
 
 .icon {
@@ -9,8 +13,20 @@
   cursor: pointer;
 }
 
-.li {
+.todoList {
   word-wrap: break-word;
+  padding: 10px;
+  text-align: start;
+  color: #18526d;
+  font-size: 20px;
+  font-family: "Handlee", cursive;
+  border: none;
+  outline: none;
+  box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.15),
+    inset 2px 2px 5px rgb(196, 221, 252),
+    inset -3px -3px 5px rgba(0, 0, 0, 0.15);
+  background-color: #f7f7f0;
+  width: 400px;
 }
 
 .createdTime {
@@ -18,17 +34,28 @@
   font-size: 12px;
 }
 
-.imgBtn {
+.btnUpdate, .btnRemove {
   width: 18px;
 }
 
+@media all and (max-width: 1024px) {
+  .todoList {
+    padding: 5px;
+    font-size: 15px;
+    width: 400px;
+  }
+}
+
 @media (max-width: 420px) {
-  .imgBtn {
+  .btnUpdate, .btnRemove {
     width: 10px;
   }
 
-  .li {
-    word-wrap: break-word;
+  .todoList {
+    margin-left: -5px;
+    padding: 5px;
+    font-size: 15px;
+    width: 200px;
   }
 
   .createdTime {

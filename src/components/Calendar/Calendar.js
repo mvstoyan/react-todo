@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import style from "./Calendar.module.css";
 import { data } from "./data";
+import globalStyle from "../../public/globalStyles.module.css";
 
 const MyCalendar = ({ todoList, setTodoList }) => {
   const [date, setDate] = useState(new Date()); // selected date
@@ -76,7 +77,7 @@ const MyCalendar = ({ todoList, setTodoList }) => {
       <div className={style.two}>
         <h2>{data[permanent].reminder}</h2>
       </div>
-      <Calendar
+      <Calendar 
         onChange={setDate}
         value={date}
         onClickDay={handleDateClick}
@@ -97,7 +98,7 @@ const MyCalendar = ({ todoList, setTodoList }) => {
                       value={inputValue}
                       onChange={handleInputChange}
                     />
-                    <button onClick={addTask} className={style.btn}>+</button>
+                    <button onClick={addTask} className={`${globalStyle.frame} ${style.btn}`}>+</button>
                   </div>
                 )}
             </div>
