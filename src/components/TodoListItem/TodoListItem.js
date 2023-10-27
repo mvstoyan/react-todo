@@ -2,6 +2,7 @@ import React from "react";
 import style from "./TodoListItem.module.css";
 import Remove from "../../public/img/remove.svg";
 import Update from "../../public/img/edit.svg";
+import PropTypes from "prop-types";
 
 function TodoListItem({ todo, onRemoveTodo, onUpdateTodo }) {
   const handleUpdateClick = () => {
@@ -33,6 +34,16 @@ function TodoListItem({ todo, onRemoveTodo, onUpdateTodo }) {
     </div>
   );
 }
+
+TodoListItem.propTypes = {
+  // shape - expected object structure
+  todo: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string,
+  }),
+  onRemoveTodo: PropTypes.func,
+  onUpdateTodo: PropTypes.func,
+};
 
 export default TodoListItem;
 

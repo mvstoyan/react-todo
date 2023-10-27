@@ -1,10 +1,11 @@
 import React from "react";
 import AddTodoForm from "../AddTodoForm/AddTodoForm";
 import TodoList from "../TodoList/TodoList";
-import style from "./reactTodo.module.css";
+import style from "./TodoContainer.module.css";
 import Animation from "../Animation/animation";
+import PropTypes from "prop-types";
 
-function ReactTodo() {
+function TodoContainer() {
   const [todoList, setTodoList] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const airtableUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}`;
@@ -148,4 +149,12 @@ function ReactTodo() {
   );
 }
 
-export default ReactTodo;
+TodoContainer.propTypes = {
+  todoList: PropTypes.array,
+  isLoading: PropTypes.bool, // boolean
+  addTodo: PropTypes.func,
+  removeTodo: PropTypes.func,
+  updateTodo: PropTypes.func,
+};
+
+export default TodoContainer;
