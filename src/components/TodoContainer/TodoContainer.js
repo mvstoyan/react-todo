@@ -194,7 +194,6 @@ function TodoContainer() {
   };
 
   return (
-    <>
       <div className={style.notePage}>
         <div className={style.animationContainer}>
           <Animation />
@@ -216,7 +215,7 @@ function TodoContainer() {
           )}
         </div>
       </div>
-    </>
+    
   );
 }
 

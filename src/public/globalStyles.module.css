@@ -10,6 +10,9 @@ body {
   background-position: center;
   background-attachment: fixed;
   background-color: #f7f7f0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .btn {
@@ -30,8 +33,18 @@ h2 {
   font-family: "Handlee", cursive;
 }
 
+p {
+  font-size: 18px;
+  color: #18526d;
+  font-family: "Handlee", cursive;
+}
+
 .navbar {
-  padding: 5px;
+  padding: 1%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .navbar ul {

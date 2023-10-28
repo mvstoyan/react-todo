@@ -1,5 +1,11 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  useLocation,
+} from "react-router-dom";
 import TodoContainer from "./components/TodoContainer/TodoContainer";
 import Calendar from "./components/Calendar/Calendar";
 import globalStyle from "./public/globalStyles.module.css";
@@ -18,7 +24,6 @@ function App() {
 
 function MainNavigation() {
   let location = useLocation();
-
   return (
     <nav className={globalStyle.navbar}>
       <ul>
