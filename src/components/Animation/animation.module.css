@@ -9,15 +9,12 @@
   flex-wrap: wrap;
 }
 
-@media all and (max-width: 1024px) {
-  .images {
-    width: 100px;
-  }
 
-  .animation {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    flex-wrap: wrap;
+
+
+@media (max-width: 420px) {
+  .images {
+    width: 150px;
   }
 }
+

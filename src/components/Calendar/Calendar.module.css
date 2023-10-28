@@ -14,6 +14,7 @@
   font-size: 20px;
   width: 70%;
   padding: 20px;
+  margin-top: 40px;
 }
 
 .calendarContainer {
@@ -40,14 +41,6 @@
   text-align: center;
 }
 
-.dateStyle {
-  color: #18526d;
-  background-color: #f7f7f0;
-  border: 1px #c4ddfc solid;
-  text-align: center;
-  font-family: "Fredericka the Great", cursive;
-}
-
 input {
   width: 90%;
   border: 1px solid #c4ddfc;
@@ -58,4 +51,26 @@ input {
   color: #18526d;
   background-color: #c4ddfc;
   border: none;
+}
+
+
+@media all and (max-width: 1024px) {
+  .calendar {
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  .calendarTask {
+    min-height: 30px;
+  }
+}
+
+@media (max-width: 420px) {
+  .calendar {
+    font-size: 13px;
+  }
+  
+  .calendarTask {
+    min-height: 20px;
+  }
 }
