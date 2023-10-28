@@ -38,7 +38,7 @@
 
 .task {
   font-family: "Handlee", cursive;
-  text-align: center;
+  display: flex;
 }
 
 input {
@@ -47,12 +47,13 @@ input {
 }
 
 .btn {
+  padding: 3px;
   font-weight: bolder;
   color: #18526d;
+  text-align: center;
   background-color: #c4ddfc;
   border: none;
 }
-
 
 @media all and (max-width: 1024px) {
   .calendar {
@@ -69,7 +70,7 @@ input {
   .calendar {
     font-size: 13px;
   }
-  
+
   .calendarTask {
     min-height: 20px;
   }

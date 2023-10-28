@@ -9,12 +9,8 @@
   flex-wrap: wrap;
 }
 
-
-
-
 @media (max-width: 420px) {
   .images {
     width: 150px;
   }
 }
-

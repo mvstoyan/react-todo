@@ -34,7 +34,8 @@
   font-size: 12px;
 }
 
-.btnUpdate, .btnRemove {
+.btnUpdate,
+.btnRemove {
   width: 18px;
 }
 
@@ -47,7 +48,8 @@
 }
 
 @media (max-width: 420px) {
-  .btnUpdate, .btnRemove {
+  .btnUpdate,
+  .btnRemove {
     width: 10px;
   }
 

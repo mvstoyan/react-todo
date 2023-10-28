@@ -30,9 +30,9 @@
   }
 
   .header,
-.Loading {
-  font-size:30px;
-}
+  .Loading {
+    font-size: 30px;
+  }
 
   .animationContainer {
     width: 100%;
@@ -50,8 +50,7 @@
     padding: 10px;
   }
   .header,
-.Loading {
-  font-size:20px;
-}
-
+  .Loading {
+    font-size: 20px;
+  }
 }

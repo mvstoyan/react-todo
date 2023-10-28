@@ -19,15 +19,25 @@ function TodoListItem({ todo, onRemoveTodo, onUpdateTodo }) {
     <li className={style.todoList}>
       <div className={style.todoItem}>
         <div>
-          <p className={style.createdTime + (isToday ? ' ' + style.today : '')}>
-            {`${createdTime.getDate()}/${createdTime.getMonth() + 1}/${createdTime.getFullYear()}`}
+          <p className={style.createdTime + (isToday ? " " + style.today : "")}>
+            {`${createdTime.getDate()}/${
+              createdTime.getMonth() + 1
+            }/${createdTime.getFullYear()}`}
           </p>
         </div>
         <div>
-          <button className={style.icon} type="button" onClick={handleUpdateClick}>
+          <button
+            className={style.icon}
+            type="button"
+            onClick={handleUpdateClick}
+          >
             <img src={Update} alt="Update" className={style.btnUpdate} />
           </button>
-          <button className={style.icon} type="button" onClick={() => onRemoveTodo(todo.id)}>
+          <button
+            className={style.icon}
+            type="button"
+            onClick={() => onRemoveTodo(todo.id)}
+          >
             <img src={Remove} alt="Remove" className={style.btnRemove} />
           </button>
         </div>

@@ -15,7 +15,10 @@ function TodoList({
   return (
     <>
       <ul className={style.todoUl}>
-        <button onClick={toggleSortOrder} className={`${globalStyle.btn} ${style.btn}`}>
+        <button
+          onClick={toggleSortOrder}
+          className={`${globalStyle.btn} ${style.btn}`}
+        >
           {sortButtonText}
         </button>
         {todoList.map((todo) => (

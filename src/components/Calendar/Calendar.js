@@ -98,12 +98,12 @@ const MyCalendar = ({ todoList, setTodoList }) => {
                         value={inputValue}
                         onChange={handleInputChange}
                       />
-                      <button
+                      <div
                         onClick={addTask}
                         className={`${globalStyle.frame} ${style.btn}`}
                       >
                         +
-                      </button>
+                      </div>
                     </div>
                   )}
               </div>

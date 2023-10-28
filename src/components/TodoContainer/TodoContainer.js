@@ -110,7 +110,7 @@ function TodoContainer() {
       return null;
     }
   };
-  
+
   const removeTodo = async (id) => {
     const options = {
       method: "DELETE",
@@ -182,40 +182,42 @@ function TodoContainer() {
     try {
       const allRecords = [...todoList];
       for (const record of allRecords) {
-        const deleteRecordResponse = await fetch(`${airtableUrl}/${record.id}`, deleteOptions);
+        const deleteRecordResponse = await fetch(
+          `${airtableUrl}/${record.id}`,
+          deleteOptions
+        );
         if (!deleteRecordResponse.ok) {
           throw new Error(`Error: ${deleteRecordResponse.status}`);
         }
       }
-      setTodoList([]); // Удаляем все задачи из списка
+      setTodoList([]); 
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-      <div className={style.notePage}>
-        <div className={style.animationContainer}>
-          <Animation />
-        </div>
-        <div className={style.noteContainer}>
-          <h1 className={style.header}>What are your plans for today</h1>
-          <AddTodoForm onAddTodo={addTodo} onDeleteAll={deleteAll}/>
-
-          {isLoading ? (
-            <p className={style.Loading}>Loading ...</p>
-          ) : (
-            <TodoList
-              todoList={todoList}
-              onRemoveTodo={removeTodo}
-              onUpdateTodo={updateTodo}
-              toggleSortOrder={toggleSortOrder}
-              sortOrder={sortOrder}
-            />
-          )}
-        </div>
+    <div className={style.notePage}>
+      <div className={style.animationContainer}>
+        <Animation />
       </div>
-    
+      <div className={style.noteContainer}>
+        <h1 className={style.header}>What are your plans for today</h1>
+        <AddTodoForm onAddTodo={addTodo} onDeleteAll={deleteAll} />
+
+        {isLoading ? (
+          <p className={style.Loading}>Loading ...</p>
+        ) : (
+          <TodoList
+            todoList={todoList}
+            onRemoveTodo={removeTodo}
+            onUpdateTodo={updateTodo}
+            toggleSortOrder={toggleSortOrder}
+            sortOrder={sortOrder}
+          />
+        )}
+      </div>
+    </div>
   );
 }
 
