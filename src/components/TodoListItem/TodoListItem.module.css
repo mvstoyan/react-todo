@@ -1,16 +1,37 @@
-.imgBtn {
-  width: 24px;
+.container {
+  display: flex;
+  justify-content: space-between;
 }
+
 .icon {
   border: none;
   background-color: transparent;
+  cursor: pointer;
 }
 
-@media (max-width: 767px) {
+.li {
+  word-wrap: break-word;
+}
+
+.createdTime {
+  color: #18526d;
+  font-size: 12px;
+}
+
+.imgBtn {
+  width: 18px;
+}
+
+@media (max-width: 420px) {
   .imgBtn {
-    width: 15px;
+    width: 10px;
   }
-  .icon {
-    size: 15px;
+
+  .li {
+    word-wrap: break-word;
+  }
+
+  .createdTime {
+    font-size: 10px;
   }
 }
