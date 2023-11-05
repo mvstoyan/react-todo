@@ -110,6 +110,7 @@ function TodoContainer() {
       return null;
     }
   };
+
   const removeTodo = async (id) => {
     const options = {
       method: "DELETE",
@@ -171,36 +172,58 @@ function TodoContainer() {
     }
   };
 
-  return (
-    <>
-      <div className={style.note}>
-        <div className={style.first}>
-          <Animation />
-        </div>
-        <div className={style.second}>
-          <h1 className={style.header}>What are your plans for today</h1>
-          <AddTodoForm onAddTodo={addTodo} />
+  const deleteAll = async () => {
+    const deleteOptions = {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${airtableToken}`,
+      },
+    };
+    try {
+      const allRecords = [...todoList];
+      for (const record of allRecords) {
+        const deleteRecordResponse = await fetch(
+          `${airtableUrl}/${record.id}`,
+          deleteOptions
+        );
+        if (!deleteRecordResponse.ok) {
+          throw new Error(`Error: ${deleteRecordResponse.status}`);
+        }
+      }
+      setTodoList([]); 
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-          {isLoading ? (
-            <p className={style.Loading}>Loading ...</p>
-          ) : (
-            <TodoList
-              todoList={todoList}
-              onRemoveTodo={removeTodo}
-              onUpdateTodo={updateTodo}
-              toggleSortOrder={toggleSortOrder}
-              sortOrder={sortOrder}
-            />
-          )}
-        </div>
+  return (
+    <div className={style.notePage}>
+      <div className={style.animationContainer}>
+        <Animation />
       </div>
-    </>
+      <div className={style.noteContainer}>
+        <h1 className={style.header}>What are your plans for today</h1>
+        <AddTodoForm onAddTodo={addTodo} onDeleteAll={deleteAll} />
+
+        {isLoading ? (
+          <p className={style.Loading}>Loading ...</p>
+        ) : (
+          <TodoList
+            todoList={todoList}
+            onRemoveTodo={removeTodo}
+            onUpdateTodo={updateTodo}
+            toggleSortOrder={toggleSortOrder}
+            sortOrder={sortOrder}
+          />
+        )}
+      </div>
+    </div>
   );
 }
 
 TodoContainer.propTypes = {
   todoList: PropTypes.array,
-  isLoading: PropTypes.bool, // boolean
+  isLoading: PropTypes.bool,
   addTodo: PropTypes.func,
   removeTodo: PropTypes.func,
   updateTodo: PropTypes.func,

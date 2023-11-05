@@ -1,9 +1,9 @@
 .inputField {
   padding: 10px;
-  color: #18526d;
   font-size: 20px;
   width: 400px;
   height: 30px;
+  color: #18526d;
   border: none;
   outline: none;
   box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.15),

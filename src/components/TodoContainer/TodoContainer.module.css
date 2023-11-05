@@ -1,51 +1,56 @@
 .header,
 .Loading {
-  font-size: 40px;
   color: #18526d;
+  font-size: 40px;
   font-family: "Fredericka the Great", cursive;
 }
 
-.note {
-  width: 100%;
+.notePage {
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  margin-top: 6%;
 }
 
-.second {
+.noteContainer {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  margin-top: 40px;
 }
 
 @media all and (max-width: 1024px) {
-  .note {
+  .notePage {
     display: flex;
     flex-direction: column-reverse;
     justify-content: flex-start;
-    padding: 10px;
+    width: 100%;
+    height: 100vh;
+    margin-top: 40px;
+  }
+
+  .header,
+  .Loading {
+    font-size: 30px;
+  }
+
+  .animationContainer {
     width: 100%;
     height: 100vh;
   }
 
-  .first {
+  .noteContainer {
     width: 100%;
     height: 100vh;
-  }
-
-  .second {
-    width: 100%;
-    height: 100vh;
-  }
-  .header {
-    font-size: 18px;
   }
 }
 
 @media all and (max-width: 420px) {
-  .note {
+  .notePage {
     padding: 10px;
   }
-  .header {
-    font-size: 18px;
+  .header,
+  .Loading {
+    font-size: 20px;
   }
 }

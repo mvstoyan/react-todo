@@ -1,0 +1,77 @@
+.calendarPage {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 6%;
+}
+
+.calendar {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: absolute;
+  color: #18526d;
+  font-size: 20px;
+  width: 70%;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+.calendarContainer {
+  width: 100% !important;
+  color: #18526d !important;
+  background-color: #f7f7f0 !important;
+  text-align: center !important;
+  font-family: "Fredericka the Great", cursive !important;
+  border: none;
+  outline: none;
+  box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.15),
+    inset 2px 2px 5px rgb(196, 221, 252),
+    inset -3px -3px 5px rgba(0, 0, 0, 0.15);
+  background-color: #f7f7f0;
+}
+
+.calendarTask {
+  width: auto;
+  min-height: 50px;
+}
+
+.task {
+  font-family: "Handlee", cursive;
+  display: flex;
+}
+
+input {
+  width: 90%;
+  border: 1px solid #c4ddfc;
+}
+
+.btn {
+  padding: 3px;
+  font-weight: bolder;
+  color: #18526d;
+  text-align: center;
+  background-color: #c4ddfc;
+  border: none;
+}
+
+@media all and (max-width: 1024px) {
+  .calendar {
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  .calendarTask {
+    min-height: 30px;
+  }
+}
+
+@media (max-width: 420px) {
+  .calendar {
+    font-size: 13px;
+  }
+
+  .calendarTask {
+    min-height: 20px;
+  }
+}
